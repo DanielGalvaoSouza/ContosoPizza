@@ -8,12 +8,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add the PizzaContext
 builder.Services.AddSqlite<PizzaContext>("Data Source=Promotions/ContosoPizza.db");
+builder.Services.AddSqlite<PromotionsContext>("Data Source=Promotions/Promotions.db");
+
+// Add the PizzaContext
+builder.Services.AddScoped<PizzaService>();
 
 // Add the PromotionsContext
-
-builder.Services.AddScoped<PizzaService>();
+builder.Services.AddScoped<CouponService>();
 
 var app = builder.Build();
 
